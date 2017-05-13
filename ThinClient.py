@@ -1,13 +1,14 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import sys
 import time
 import socket
 import subprocess
+from appJar import gui # import the library
 
 sock = socket.socket()
-sock.bind(sock.gethostbyname(), 4545)
-
-
-
+sock.bind((socket.gethostbyname('localhost'), 4545))
 
 
 def Tagging():
@@ -21,5 +22,15 @@ def Connect(sock):
 	sock.connect()# server ip adress
 	print("Connected to server, entering UI...")
 def UI():
-	
-	
+	# top slice - CREATE the GUI
+	app = gui()
+
+	### fillings go here ###
+	app.addLabel("title", "I suggest we use this... (((appJar)))")
+	app.setLabelBg("title", "green")
+
+	# bottom slice - START the GUI
+	app.go()
+
+if __name__ == '__main__':
+	UI()
